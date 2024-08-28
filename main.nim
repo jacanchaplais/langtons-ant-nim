@@ -26,7 +26,6 @@ proc move(ant: var Ant, grid: var Grid) =
     y = ant.y
   if (x == 0) or (x == NUM_COLS) or (y == 0) or (y == NUM_ROWS):
     ant.alive = false
-  if not ant.alive:
     return
   let cell = grid[y][x]
   if cell:
