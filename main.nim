@@ -1,4 +1,4 @@
-import strutils
+import strformat
 
 from algorithm import fill
 from math import floorDiv
@@ -54,7 +54,7 @@ proc move(ant: var Ant, grid: var Grid) =
 
 
 proc main() =
-  var out_file = open("grid-data.txt", fmWrite)
+  var out_file = open("ant-data.txt", fmWrite)
   defer: close(out_file)
   var ant = Ant(
     x: floorDiv(NUM_COLS, 2),
@@ -66,9 +66,7 @@ proc main() =
     grid[row_idx].fill(false)
   while ant.alive:
     move(ant, grid)
-    for row in grid:
-      out_file.write(row.join(","))
-      out_file.write("\n")
+    out_file.write(&"{ant.y},{ant.x}")
     out_file.write("\n")
 
 
