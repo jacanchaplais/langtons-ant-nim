@@ -12,8 +12,8 @@ type
     UP, RIGHT, DOWN, LEFT
 
   Ant = object
-    x*: int
-    y*: int
+    x*: range[0 .. NUM_COLS]
+    y*: range[0 .. NUM_ROWS]
     alive*: bool = true
     direction: Direction
 
