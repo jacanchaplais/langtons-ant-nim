@@ -1,6 +1,7 @@
-import algorithm
 import strutils
-import math
+
+from algorithm import fill
+from math import floorDiv
 
 
 const
