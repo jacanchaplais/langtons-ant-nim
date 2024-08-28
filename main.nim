@@ -66,8 +66,7 @@ proc main() =
     grid[row_idx].fill(false)
   while ant.alive:
     move(ant, grid)
-    out_file.write(&"{ant.y},{ant.x}")
-    out_file.write("\n")
+    out_file.write(&"{ant.y},{ant.x}\n")
 
 
 main()
