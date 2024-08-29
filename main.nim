@@ -13,8 +13,8 @@ type
     UP, RIGHT, DOWN, LEFT
 
   Ant = object
-    x: range[0 .. NUM_COLS]
-    y: range[0 .. NUM_ROWS]
+    x: range[0 .. NUM_COLS - 1]
+    y: range[0 .. NUM_ROWS - 1]
     alive: bool = true
     direction: Direction
 
@@ -24,7 +24,7 @@ proc move(ant: var Ant, grid: var Grid) =
   let
     x = ant.x
     y = ant.y
-  if (x == 0) or (x == NUM_COLS) or (y == 0) or (y == NUM_ROWS):
+  if (x == 0) or (x == NUM_COLS - 1) or (y == 0) or (y == NUM_ROWS - 1):
     ant.alive = false
     return
   let cell = grid[y][x]
@@ -52,7 +52,6 @@ proc move(ant: var Ant, grid: var Grid) =
     ant.y -= 1
 
 proc main() =
-  let start = cpuTime()
   var ant = Ant(
     x: floorDiv(NUM_COLS, 2),
     y: floorDiv(NUM_ROWS, 2),
@@ -70,6 +69,7 @@ proc main() =
     out_file.write(&"{ant.y},{ant.x}\n")
     move(ant, grid)
 
-  echo("time: ", cpuTime() - start)
 
+let start = cpuTime()
 main()
+echo("time: ", cpuTime() - start)
